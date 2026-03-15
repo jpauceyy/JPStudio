@@ -6,7 +6,7 @@ const projects = [
     id: 1,
     title: "IXO eSports Revamp",
     tags: ["Branding", "Graphic Design"],
-    image: "https://picsum.photos/seed/neon/800/1000?blur=2",
+    image: "/ixo.png",
     aspectRatio: "aspect-[4/5]",
     offset: "mt-0",
   },
