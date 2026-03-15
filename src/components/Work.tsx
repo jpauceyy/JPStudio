@@ -28,9 +28,9 @@ const projects = [
   },
   {
     id: 4,
-    title: "Digital Scrapbook",
-    tags: ["Interactive", "Development"],
-    image: "https://picsum.photos/seed/scrap/800/600?blur=2",
+    title: "ACCL",
+    tags: ["Branding", "Graphic Design"],
+    image: "/accl.jpg",
     aspectRatio: "aspect-[4/3]",
     offset: "md:mt-32",
   },
