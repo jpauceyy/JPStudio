@@ -68,7 +68,7 @@ export const TypewriterEffect = ({
     );
   };
   return (
-    <h1 className={`font-bold ${className || "text-base sm:text-xl md:text-3xl lg:text-5xl leading-100"}`}>
+    <h1 className={`font-bold ${className || "text-base sm:text-xl md:text-3xl lg:text-5xl"}`}>
       {renderWords()}
       <motion.span
         initial={{

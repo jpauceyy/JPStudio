@@ -16,9 +16,9 @@ export function Hero() {
     <section className="min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-24 pt-32 pb-20 relative overflow-hidden">
       <div className="max-w-7xl mx-auto w-full relative z-10">
         <FadeIn delay={0.1}>
-          <TypewriterEffect 
-            words={words} 
-            className="font-display text-[12vw] md:text-[8vw] leading-[0.85] tracking-tighter uppercase mb-8 text-left" 
+          <TypewriterEffect
+            words={words}
+            className="font-display text-[12vw] md:text-[8vw] leading-[100] tracking-tighter uppercase mb-8 text-left"
             cursorClassName="h-[10vw] md:h-[7vw] bg-white ml-2"
           />
         </FadeIn>
