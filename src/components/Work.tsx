@@ -12,9 +12,9 @@ const projects = [
   },
   {
     id: 2,
-    title: "Brutal Architecture",
+    title: "LF Coaching",
     tags: ["Web Design", "UI/UX"],
-    image: "https://picsum.photos/seed/brutal/800/800?blur=1",
+    image: "/LF.jpg",
     aspectRatio: "aspect-square",
     offset: "md:mt-32",
   },

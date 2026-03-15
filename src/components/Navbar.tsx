@@ -20,12 +20,12 @@ export function Navbar() {
     >
       <div
         className={`flex justify-between items-center w-full transition-all duration-500 ${isScrolled
-            ? "max-w-4xl bg-black/40 backdrop-blur-xl border border-white/10 rounded-full py-3 px-6 shadow-2xl"
-            : "max-w-full py-0 px-0"
+          ? "max-w-4xl bg-black/40 backdrop-blur-xl border border-white/10 rounded-full py-3 px-6 shadow-2xl"
+          : "max-w-full py-0 px-0"
           }`}
       >
         <div className={`transition-all duration-500 ${isScrolled ? "w-8 h-8" : "w-12 h-12"}`}>
-          <img src="/jplogo.png" alt="Logo" className="w-full h-full object-contain" />
+          <img src="/jplogo-header.png" alt="Logo" className="w-full h-full object-contain" />
         </div>
         <button className="flex items-center gap-2 font-mono text-sm uppercase tracking-widest hover:opacity-70 transition-opacity">
           <span className={isScrolled ? "hidden sm:inline" : ""}>Menu</span>
