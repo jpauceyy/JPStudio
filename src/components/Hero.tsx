@@ -18,7 +18,7 @@ export function Hero() {
         <FadeIn delay={0.1}>
           <TypewriterEffect
             words={words}
-            className="font-display text-[12vw] md:text-[8vw]  tracking-tighter uppercase mb-8 text-left"
+            className="font-display text-[12vw] md:text-[8vw] leading-100 tracking-tighter uppercase mb-8 text-left"
             cursorClassName="h-[10vw] md:h-[7vw] bg-white ml-2"
           />
         </FadeIn>
