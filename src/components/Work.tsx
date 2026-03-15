@@ -20,9 +20,9 @@ const projects = [
   },
   {
     id: 3,
-    title: "Silent Echoes",
-    tags: ["Typography", "Print"],
-    image: "https://picsum.photos/seed/silent/800/1200?blur=3",
+    title: "OBN",
+    tags: ["Branding", "Graphic Design"],
+    image: "/obn.jpg",
     aspectRatio: "aspect-[2/3]",
     offset: "mt-0",
   },
