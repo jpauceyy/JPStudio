@@ -22,7 +22,7 @@ export function About() {
                 whileHover="hover"
               >
                 <motion.img
-                  src="https://picsum.photos/seed/portrait/800/1066?blur=1"
+                  src="/aboutme.png"
                   alt="Portrait"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover grayscale opacity-90 transition-all duration-700 ease-out"
