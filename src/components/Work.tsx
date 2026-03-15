@@ -6,7 +6,7 @@ const projects = [
     id: 1,
     title: "IXO eSports Revamp",
     tags: ["Branding", "Graphic Design"],
-    image: "/ixo.jpg",
+    image: "/IXO.jpg",
     aspectRatio: "aspect-[4/5]",
     offset: "mt-0",
   },
