@@ -47,7 +47,7 @@ export function About() {
             <FadeIn delay={0.3}>
               <p className="font-sans text-lg md:text-xl leading-relaxed text-neutral-500 mb-12">
                 Every pixel serves a purpose.
-                When I'm not designing, I'm probably gaming or curating obscure playlists.
+                When I'm not designing, I'm probably gaming or watching the Arsenal.
               </p>
             </FadeIn>
 
