@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Navbar } from "./components/Navbar";
+import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { Work } from "./components/Work";
 import { Experience } from "./components/Experience";
@@ -14,7 +14,7 @@ import { Contact } from "./components/Contact";
 export default function App() {
   return (
     <main className="bg-black text-white min-h-screen font-sans overflow-hidden">
-      <Navbar />
+      <Header />
       <Hero />
       <Work />
       <Experience />
