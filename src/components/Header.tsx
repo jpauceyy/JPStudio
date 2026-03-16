@@ -241,7 +241,7 @@ export const Header: React.FC<iHeaderProps> = ({
     return (
         <>
             <div className="fixed top-0 left-0 m-5 z-50 w-12 h-12 mix-blend-difference">
-                <img src="/logo.svg" alt="Logo" className="w-full h-full object-contain" />
+                <img src="/jplogo-header.png" alt="Logo" className="w-full h-full object-contain" />
             </div>
 
             <div className="relative">
