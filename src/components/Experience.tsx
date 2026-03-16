@@ -20,7 +20,7 @@ const experiences = [
   {
     id: 4,
     role: "Graphics",
-    date: "2016 - Present",
+    date: "2015 - Present",
   },
 ];
 

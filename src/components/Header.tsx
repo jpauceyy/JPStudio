@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { motion, useMotionValue, AnimatePresence } from "motion/react";
+import { motion, useMotionValue, AnimatePresence, useScroll, useMotionValueEvent } from "motion/react";
 import { Linkedin, Github, Dribbble, Figma } from "lucide-react";
 
 interface iNavItem {
@@ -226,8 +226,14 @@ export const Header: React.FC<iHeaderProps> = ({
     footer = <CustomFooter />,
 }) => {
     const [isActive, setIsActive] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+    const { scrollY } = useScroll();
     const openAudioRef = useRef<HTMLAudioElement | null>(null);
     const closeAudioRef = useRef<HTMLAudioElement | null>(null);
+
+    useMotionValueEvent(scrollY, "change", (latest) => {
+        setIsScrolled(latest > 50);
+    });
 
     const handleClick = () => {
         if (isActive) {
@@ -240,31 +246,45 @@ export const Header: React.FC<iHeaderProps> = ({
 
     return (
         <>
-            <div className="fixed top-0 left-0 m-5 z-50 w-12 h-12 mix-blend-difference">
-                <img src="/jplogo-header.png" alt="Logo" className="w-full h-full object-contain" />
-            </div>
-
-            <div className="relative">
+            <motion.nav
+                initial={{ y: -100 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className={`fixed top-0 left-0 right-0 z-50 flex justify-center transition-all duration-500 ${isScrolled ? "p-4" : "p-6 mix-blend-difference"
+                    }`}
+            >
                 <div
-                    onClick={handleClick}
-                    className="fixed -right-1 top-0 md:-right-1 m-5 z-50 w-12 h-12 rounded-none flex items-center justify-center cursor-pointer bg-white"
+                    className={`flex justify-between items-center w-full transition-all duration-500 ${isScrolled
+                        ? "max-w-4xl bg-black/40 backdrop-blur-xl border border-white/10 rounded-full py-3 px-6 shadow-2xl"
+                        : "max-w-full py-0 px-0"
+                        }`}
                 >
-                    <div className="relative w-8 h-6 flex flex-col justify-between items-center">
-                        <span
-                            className={`block h-1 w-7 bg-black transition-transform duration-300 ${isActive ? "rotate-45 translate-y-2.5" : ""
-                                }`}
-                        ></span>
-                        <span
-                            className={`block h-1 w-7 bg-black transition-opacity duration-300 ${isActive ? "opacity-0" : ""
-                                }`}
-                        ></span>
-                        <span
-                            className={`block h-1 w-7 bg-black transition-transform duration-300 ${isActive ? "-rotate-45 -translate-y-2.5" : ""
-                                }`}
-                        ></span>
+                    <div className={`transition-all duration-500 ${isScrolled ? "w-8 h-8" : "w-12 h-12"}`}>
+                        <img src="/jplogo-header.png" alt="Logo" className="w-full h-full object-contain" />
+                    </div>
+
+                    <div
+                        onClick={handleClick}
+                        className={`flex items-center justify-center cursor-pointer transition-all duration-500 ${isScrolled ? "w-10 h-10 bg-white rounded-full" : "w-12 h-12 bg-white rounded-none"
+                            }`}
+                    >
+                        <div className={`relative flex flex-col justify-between items-center ${isScrolled ? "w-5 h-4" : "w-8 h-6"}`}>
+                            <span
+                                className={`block bg-black transition-transform duration-300 ${isScrolled ? "h-[2px] w-5" : "h-1 w-7"} ${isActive ? (isScrolled ? "rotate-45 translate-y-1.5" : "rotate-45 translate-y-2.5") : ""
+                                    }`}
+                            ></span>
+                            <span
+                                className={`block bg-black transition-opacity duration-300 ${isScrolled ? "h-[2px] w-5" : "h-1 w-7"} ${isActive ? "opacity-0" : ""
+                                    }`}
+                            ></span>
+                            <span
+                                className={`block bg-black transition-transform duration-300 ${isScrolled ? "h-[2px] w-5" : "h-1 w-7"} ${isActive ? (isScrolled ? "-rotate-45 -translate-y-2" : "-rotate-45 -translate-y-2.5") : ""
+                                    }`}
+                            ></span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </motion.nav>
 
             <AnimatePresence mode="wait">
                 {isActive && (
