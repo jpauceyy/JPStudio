@@ -1,6 +1,18 @@
 import React, { useState, useRef } from "react";
 import { motion, useMotionValue, AnimatePresence, useScroll, useMotionValueEvent } from "motion/react";
-import { Linkedin, Github, Dribbble, Figma } from "lucide-react";
+import { Twitter } from "lucide-react";
+
+const BehanceIcon = ({ size = 24 }: { size?: number }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8.22 10.96c1.11 0 1.9-.3 2.37-.88.47-.59.71-1.39.71-2.4 0-1.01-.24-1.81-.71-2.4-.47-.59-1.26-.88-2.37-.88H2v7.44h6.22zm-3.6-5.04h2.7c.6 0 1.05.12 1.35.36.3.24.45.63.45 1.17 0 .54-.15.93-.45 1.17-.3.24-.75.36-1.35.36H4.62V5.92zm4.32 12.6c1.2 0 2.07-.33 2.61-.99.54-.66.81-1.56.81-2.7 0-1.14-.27-2.04-.81-2.7-.54-.66-1.41-.99-2.61-.99H2v7.38h6.94zm-4.32-5.1h3.3c.72 0 1.23.15 1.53.45.3.3.45.75.45 1.35 0 .6-.15 1.05-.45 1.35-.3.3-.81.45-1.53.45H4.62v-3.6zm13.68-1.8c-1.14 0-2.04.36-2.7 1.08-.66.72-.99 1.68-.99 2.88 0 1.2.33 2.16.99 2.88.66.72 1.56 1.08 2.7 1.08 1.14 0 2.04-.36 2.7-1.08.66-.72.99-1.68.99-2.88 0-1.2-.33-2.16-.99-2.88-.66-.72-1.56-1.08-2.7-1.08zm-1.08 3.24c.18-.36.48-.54.9-.54.42 0 .72.18.9.54.18.36.27.84.27 1.44h-2.34c0-.6.09-1.08.27-1.44zm3.42-7.56h-4.68v1.44h4.68V7.32z" />
+    </svg>
+);
+
+const DiscordIcon = ({ size = 24 }: { size?: number }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z" />
+    </svg>
+);
 
 interface iNavItem {
     heading: string;
@@ -64,18 +76,16 @@ const defaultNavItems: iNavItem[] = [
 const CustomFooter: React.FC = () => {
     return (
         <div className="flex w-full text-sm justify-between text-black px-10 md:px-24 py-5">
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-                <Linkedin size={24} />
+            <a href="https://behance.net" target="_blank" rel="noopener noreferrer">
+                <BehanceIcon size={24} />
             </a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-                <Github size={24} />
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                <Twitter size={24} />
             </a>
-            <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer">
-                <Dribbble size={24} />
+            <a href="https://discord.com" target="_blank" rel="noopener noreferrer">
+                <DiscordIcon size={24} />
             </a>
-            <a href="https://www.figma.com" target="_blank" rel="noopener noreferrer">
-                <Figma size={24} />
-            </a>
+            <div className="w-6 h-6"></div> {/* Blank icon */}
         </div>
     );
 };
@@ -250,13 +260,13 @@ export const Header: React.FC<iHeaderProps> = ({
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className={`fixed top-0 left-0 right-0 z-50 flex justify-center transition-all duration-500 ${isScrolled ? "p-4" : "p-6 mix-blend-difference"
+                className={`fixed top-0 left-0 right-0 z-50 flex justify-center transition-all duration-500 ${isScrolled ? "p-4" : "p-4 md:p-6 mix-blend-difference"
                     }`}
             >
                 <div
-                    className={`flex justify-between items-center w-full transition-all duration-500 ${isScrolled
-                        ? "max-w-4xl bg-black/40 backdrop-blur-xl border border-white/10 rounded-full py-3 px-6 shadow-2xl"
-                        : "max-w-full py-0 px-0"
+                    className={`flex justify-between items-center w-full transition-all duration-500 border ${isScrolled
+                            ? "max-w-4xl bg-black/40 backdrop-blur-xl border-white/10 rounded-full py-3 px-4 md:px-6 shadow-2xl"
+                            : "max-w-full bg-transparent border-white/0 rounded-full py-3 px-4 md:px-6"
                         }`}
                 >
                     <div className={`transition-all duration-500 ${isScrolled ? "w-8 h-8" : "w-12 h-12"}`}>
