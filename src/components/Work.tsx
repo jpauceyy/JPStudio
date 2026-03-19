@@ -9,6 +9,7 @@ const projects = [
     image: "/IXO.jpg",
     aspectRatio: "aspect-[4/5]",
     offset: "mt-0",
+    link: "https://www.behance.net/gallery/185491745/IXO-eSports-Graphics", // Add your link here
   },
   {
     id: 2,
@@ -17,6 +18,7 @@ const projects = [
     image: "/LF.jpg",
     aspectRatio: "aspect-square",
     offset: "md:mt-32",
+    link: "www.lukefenners.com/", // Add your link here
   },
   {
     id: 3,
@@ -25,6 +27,7 @@ const projects = [
     image: "/obn.jpg",
     aspectRatio: "aspect-[2/3]",
     offset: "mt-0",
+    link: "https://www.behance.net/gallery/169496687/OXC-eSports-Graphics", // Add your link here
   },
   {
     id: 4,
@@ -33,6 +36,7 @@ const projects = [
     image: "/accl.jpg",
     aspectRatio: "aspect-[4/3]",
     offset: "md:mt-32",
+    link: "https://www.behance.net/gallery/137788177/ACCL-Revamp-Graphics", // Add your link here
   },
 ];
 
@@ -56,44 +60,52 @@ export function Work() {
               delay={index * 0.1}
               className={project.offset}
             >
-              <motion.div
-                className="group cursor-pointer relative"
-                whileHover="hover"
+              {/* Wrapped the motion div in an anchor tag */}
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
               >
-                <div
-                  className={`overflow-hidden border border-neutral-800 ${project.aspectRatio}`}
+                <motion.div
+                  className="group cursor-pointer relative"
+                  whileHover="hover"
                 >
-                  <motion.img
-                    src={project.image}
-                    alt={project.title}
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover grayscale opacity-80 transition-all duration-700 ease-out"
-                    variants={{
-                      hover: {
-                        scale: 1.05,
-                        filter: "grayscale(0%)",
-                        opacity: 1,
-                      },
-                    }}
-                  />
-                </div>
-
-                <div className="mt-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                  <h3 className="font-display text-2xl md:text-3xl uppercase tracking-tight">
-                    {project.title}
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="font-mono text-[10px] uppercase tracking-widest px-3 py-1 border border-neutral-700 rounded-full"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                  <div
+                    className={`overflow-hidden border border-neutral-800 ${project.aspectRatio}`}
+                  >
+                    <motion.img
+                      src={project.image}
+                      alt={project.title}
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover grayscale opacity-80 transition-all duration-700 ease-out"
+                      variants={{
+                        hover: {
+                          scale: 1.05,
+                          filter: "grayscale(0%)",
+                          opacity: 1,
+                        },
+                      }}
+                    />
                   </div>
-                </div>
-              </motion.div>
+
+                  <div className="mt-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <h3 className="font-display text-2xl md:text-3xl uppercase tracking-tight">
+                      {project.title}
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="font-mono text-[10px] uppercase tracking-widest px-3 py-1 border border-neutral-700 rounded-full"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              </a>
             </FadeIn>
           ))}
         </div>
