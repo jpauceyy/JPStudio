@@ -18,7 +18,7 @@ const projects = [
     image: "/LF.jpg",
     aspectRatio: "aspect-square",
     offset: "md:mt-32",
-    link: "www.lukefenners.com/", // Add your link here
+    link: "https://www.lukefenners.com/", // Add your link here
   },
   {
     id: 3,
