@@ -1,8 +1,38 @@
+import { useState } from "react";
 import { motion } from "motion/react";
 import { FadeIn } from "./FadeIn";
 import { LiquidButton } from "./ui/liquid-glass-button";
 
 export function Contact() {
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("submitting");
+    
+    const formData = new FormData(e.currentTarget);
+    
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/j.paul2000@outlook.com", {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        setStatus("success");
+        e.currentTarget.reset();
+        setTimeout(() => setStatus("idle"), 5000);
+      } else {
+        setStatus("error");
+      }
+    } catch (err) {
+      setStatus("error");
+    }
+  };
+
   return (
     <section
       id="contact"
@@ -46,8 +76,10 @@ export function Contact() {
             <FadeIn delay={0.2}>
               <form
                 className="flex flex-col gap-8"
-                onSubmit={(e) => e.preventDefault()}
+                onSubmit={handleSubmit}
               >
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_subject" value="New submission from your Brutalist Portfolio!" />
                 <div className="flex flex-col gap-2">
                   <label
                     htmlFor="name"
@@ -58,6 +90,7 @@ export function Contact() {
                   <input
                     type="text"
                     id="name"
+                    name="name"
                     className="bg-transparent border-b border-neutral-800 pb-4 font-sans text-xl focus:outline-none focus:border-white transition-colors placeholder:text-neutral-700"
                     placeholder="John Doe"
                     required
@@ -74,6 +107,7 @@ export function Contact() {
                   <input
                     type="email"
                     id="email"
+                    name="email"
                     className="bg-transparent border-b border-neutral-800 pb-4 font-sans text-xl focus:outline-none focus:border-white transition-colors placeholder:text-neutral-700"
                     placeholder="john@example.com"
                     required
@@ -89,6 +123,7 @@ export function Contact() {
                   </label>
                   <select
                     id="project"
+                    name="project"
                     className="bg-transparent border-b border-neutral-800 pb-4 font-sans text-xl focus:outline-none focus:border-white transition-colors appearance-none text-neutral-300"
                     required
                     defaultValue=""
@@ -112,6 +147,7 @@ export function Contact() {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     rows={4}
                     className="bg-transparent border-b border-neutral-800 pb-4 font-sans text-xl focus:outline-none focus:border-white transition-colors placeholder:text-neutral-700 resize-none"
                     placeholder="Tell me about your project..."
@@ -121,10 +157,22 @@ export function Contact() {
 
                 <LiquidButton
                   type="submit"
-                  className="mt-8 font-display text-2xl uppercase tracking-tighter py-6 px-12 w-full md:w-auto self-start"
+                  disabled={status === "submitting" || status === "success"}
+                  className="mt-8 font-display text-2xl uppercase tracking-tighter py-6 px-12 w-full md:w-auto self-start disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Submit
+                  {status === "submitting" ? "Sending..." : status === "success" ? "Message Sent!" : status === "error" ? "Error! Try Again" : "Submit"}
                 </LiquidButton>
+                
+                {status === "success" && (
+                  <p className="text-green-500 font-mono text-sm uppercase tracking-widest mt-4">
+                    Thank you! I will get back to you shortly.
+                  </p>
+                )}
+                {status === "error" && (
+                  <p className="text-red-500 font-mono text-sm uppercase tracking-widest mt-4">
+                    Something went wrong. Please try again.
+                  </p>
+                )}
               </form>
             </FadeIn>
           </div>
