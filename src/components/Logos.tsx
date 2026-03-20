@@ -24,7 +24,7 @@ export function Logos() {
             {sets.map((setIndex) => (
               <div
                 key={setIndex}
-                className="flex items-center gap-20 md:gap-32 pr-20 md:pr-32"
+                className="flex shrink-0 items-center gap-20 md:gap-32 pr-20 md:pr-32"
               >
                 {logos.map((logo, index) => (
                   <div
@@ -34,7 +34,7 @@ export function Logos() {
                     <img
                       src={logo.imgSrc}
                       alt={logo.name}
-                      className="h-10 md:h-15 lg:h-20 w-auto object-contain max-w-full"
+                      className="h-12 md:h-16 lg:h-20 w-auto object-contain"
                       referrerPolicy="no-referrer"
                     />
                   </div>
