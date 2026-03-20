@@ -29,7 +29,7 @@ export function Logos() {
                 {logos.map((logo, index) => (
                   <div
                     key={`${setIndex}-${index}`}
-                    className="shrink-0 flex items-center justify-center opacity-50 hover:opacity-100 transition-opacity duration-500 grayscale min-w-[120px] md:min-w-[160px]"
+                    className="shrink-0 flex items-center justify-center opacity-50 hover:opacity-100 transition-opacity duration-500 grayscale"
                   >
                     <img
                       src={logo.imgSrc}
