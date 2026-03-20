@@ -5,10 +5,12 @@ import { LiquidButton } from "./ui/liquid-glass-button";
 
 export function Contact() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("submitting");
+    setErrorMessage("");
     
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
@@ -25,16 +27,18 @@ export function Contact() {
       
       const result = await response.json();
       
-      if (response.ok && result.success === "true") {
+      if (response.ok && (result.success === "true" || result.success === true)) {
         setStatus("success");
         e.currentTarget.reset();
         setTimeout(() => setStatus("idle"), 5000);
       } else {
         console.error("FormSubmit Error:", result);
+        setErrorMessage(result.message || "Submission failed. Please try again.");
         setStatus("error");
       }
     } catch (err) {
       console.error("Submission Error:", err);
+      setErrorMessage("Network error. Please check your connection.");
       setStatus("error");
     }
   };
@@ -175,9 +179,14 @@ export function Contact() {
                   </p>
                 )}
                 {status === "error" && (
-                  <p className="text-red-500 font-mono text-sm uppercase tracking-widest mt-4">
-                    Something went wrong. Please try again.
-                  </p>
+                  <div className="mt-4">
+                    <p className="text-red-500 font-mono text-sm uppercase tracking-widest">
+                      Something went wrong.
+                    </p>
+                    <p className="text-neutral-500 font-mono text-xs uppercase tracking-widest mt-1 italic">
+                      {errorMessage}
+                    </p>
+                  </div>
                 )}
               </form>
             </FadeIn>
