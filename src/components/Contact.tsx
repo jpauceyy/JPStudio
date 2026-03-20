@@ -11,24 +11,30 @@ export function Contact() {
     setStatus("submitting");
     
     const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
     
     try {
       const response = await fetch("https://formsubmit.co/ajax/j.paul2000@outlook.com", {
         method: "POST",
-        body: formData,
         headers: {
+          'Content-Type': 'application/json',
           'Accept': 'application/json'
-        }
+        },
+        body: JSON.stringify(data)
       });
       
-      if (response.ok) {
+      const result = await response.json();
+      
+      if (response.ok && result.success === "true") {
         setStatus("success");
         e.currentTarget.reset();
         setTimeout(() => setStatus("idle"), 5000);
       } else {
+        console.error("FormSubmit Error:", result);
         setStatus("error");
       }
     } catch (err) {
+      console.error("Submission Error:", err);
       setStatus("error");
     }
   };
