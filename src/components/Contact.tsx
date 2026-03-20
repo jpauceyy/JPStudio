@@ -13,32 +13,32 @@ export function Contact() {
     setErrorMessage("");
     
     const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
     
     try {
+      // Using FormData without explicit Content-Type header often avoids CORS issues 
+      // where the preflight request for JSON might fail in some local environments.
       const response = await fetch("https://formsubmit.co/ajax/j.paul2000@outlook.com", {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: JSON.stringify(data)
+        body: formData
       });
       
-      const result = await response.json();
-      
-      if (response.ok && (result.success === "true" || result.success === true)) {
+      if (response.ok) {
         setStatus("success");
         e.currentTarget.reset();
-        setTimeout(() => setStatus("idle"), 5000);
+        // Keep success message visible
       } else {
+        const result = await response.json().catch(() => ({ message: "Unknown error from server" }));
         console.error("FormSubmit Error:", result);
         setErrorMessage(result.message || "Submission failed. Please try again.");
         setStatus("error");
       }
     } catch (err) {
-      console.error("Submission Error:", err);
-      setErrorMessage("Network error. Please check your connection.");
+      console.error("Submission Error Details:", err);
+      // If the email was actually sent but we hit this block, it's likely a CORS error on the response.
+      setErrorMessage("The request failed, but please check your inbox (it may have still sent). If the error persists, ensure you have activated your form via the FormSubmit email.");
       setStatus("error");
     }
   };
