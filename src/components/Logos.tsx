@@ -2,28 +2,28 @@ import { FadeIn } from './FadeIn';
 
 const logos = [
   {
-    name: 'Tuki',
-    imgSrc: '/tuki.png'
+    name: 'LF',
+    imgSrc: '/lf-logo.png'
+  },
+  {
+    name: 'Gamer Gear Shop',
+    imgSrc: '/ggs.png'
   },
   {
     name: 'AVNG',
     imgSrc: '/avng.png'
   },
   {
-    name: 'emtez',
-    imgSrc: 'https://picsum.photos/seed/emtez/160/60'
+    name: 'Tuki',
+    imgSrc: '/tuki.png'
   },
   {
-    name: 'Hitachi',
-    imgSrc: 'https://picsum.photos/seed/hitachi/160/60'
+    name: 'IXO',
+    imgSrc: '/ixo-logo.png'
   },
   {
-    name: 'Raidiam',
-    imgSrc: 'https://picsum.photos/seed/raidiam/160/60'
-  },
-  {
-    name: 'Touch Stay',
-    imgSrc: 'https://picsum.photos/seed/touchstay/160/60'
+    name: 'OBN',
+    imgSrc: '/obn-logo.png'
   }
 ];
 
