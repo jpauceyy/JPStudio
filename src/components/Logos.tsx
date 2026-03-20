@@ -34,7 +34,7 @@ export function Logos() {
                     <img
                       src={logo.imgSrc}
                       alt={logo.name}
-                      className="h-8 md:h-10 w-auto object-contain max-w-full"
+                      className="h-10 md:h-15 lg:h-20 w-auto object-contain max-w-full"
                       referrerPolicy="no-referrer"
                     />
                   </div>
