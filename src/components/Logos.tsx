@@ -1,19 +1,15 @@
+import { img } from 'motion/react-client';
 import { FadeIn } from './FadeIn';
 import { Home } from 'lucide-react';
 
 const logos = [
   {
-    name: 'Argon',
-    component: <span className="font-sans font-bold text-2xl tracking-widest">ARGON™</span>
+    name: 'Tuki',
+    component: <img src="/tuki.png" alt="Tuki" />
   },
   {
-    name: 'Oxford Royale',
-    component: (
-      <div className="flex flex-col items-center leading-none">
-        <span className="font-serif text-xl tracking-widest">OXFORD</span>
-        <span className="font-serif text-xl tracking-widest">ROYALE®</span>
-      </div>
-    )
+    name: 'AVNG',
+    component: <img src="/avng.png" alt="AVNG" />
   },
   {
     name: 'emtez',
@@ -54,13 +50,13 @@ export function Logos() {
           {/* Gradient masks for smooth fade-in/fade-out at edges */}
           <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
           <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
-          
+
           <div className="flex animate-marquee">
             {sets.map((setIndex) => (
               <div key={setIndex} className="flex items-center gap-16 md:gap-24 pr-16 md:pr-24">
                 {logos.map((logo, index) => (
-                  <div 
-                    key={`${setIndex}-${index}`} 
+                  <div
+                    key={`${setIndex}-${index}`}
                     className="shrink-0 flex items-center justify-center opacity-50 hover:opacity-100 transition-opacity duration-500 grayscale"
                   >
                     {logo.component}
