@@ -1,41 +1,29 @@
-import { img } from 'motion/react-client';
 import { FadeIn } from './FadeIn';
-import { Home } from 'lucide-react';
 
 const logos = [
   {
     name: 'Tuki',
-    component: <img src="/tuki.png" alt="Tuki" />
+    imgSrc: '/tuki.png'
   },
   {
     name: 'AVNG',
-    component: <img src="/avng.png" alt="AVNG" />
+    imgSrc: '/avng.png'
   },
   {
     name: 'emtez',
-    component: <span className="font-sans font-bold text-3xl lowercase tracking-tighter">emtez</span>
+    imgSrc: 'https://picsum.photos/seed/emtez/160/60'
   },
   {
     name: 'Hitachi',
-    component: (
-      <div className="flex flex-col items-center leading-none">
-        <span className="font-sans font-black text-2xl tracking-tight">HITACHI</span>
-        <span className="font-serif text-[10px] italic mt-1">Inspire the Next</span>
-      </div>
-    )
+    imgSrc: 'https://picsum.photos/seed/hitachi/160/60'
   },
   {
     name: 'Raidiam',
-    component: <span className="font-sans font-bold text-2xl tracking-[0.2em]">RAIDIAM</span>
+    imgSrc: 'https://picsum.photos/seed/raidiam/160/60'
   },
   {
     name: 'Touch Stay',
-    component: (
-      <div className="flex items-center gap-2">
-        <Home size={24} strokeWidth={1.5} />
-        <span className="font-sans font-bold text-xl tracking-tight">Touch Stay</span>
-      </div>
-    )
+    imgSrc: 'https://picsum.photos/seed/touchstay/160/60'
   }
 ];
 
@@ -59,7 +47,12 @@ export function Logos() {
                     key={`${setIndex}-${index}`}
                     className="shrink-0 flex items-center justify-center opacity-50 hover:opacity-100 transition-opacity duration-500 grayscale"
                   >
-                    {logo.component}
+                    <img
+                      src={logo.imgSrc}
+                      alt={logo.name}
+                      className="h-8 md:h-10 w-auto object-contain"
+                      referrerPolicy="no-referrer"
+                    />
                   </div>
                 ))}
               </div>
