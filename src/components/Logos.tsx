@@ -2,7 +2,7 @@ import { FadeIn } from './FadeIn';
 
 const logos = [
   { name: 'LF', imgSrc: '/lf-logo.png' },
-  { name: 'Gamer Gear Shop', imgSrc: '/ggs.png' },
+  { name: 'Gamer Gear Shop', imgSrc: '/grand-logo.png' },
   { name: 'AVNG', imgSrc: '/avng.png' },
   { name: 'Tuki', imgSrc: '/tuki.png' },
   { name: 'IXO', imgSrc: '/ixo-logo.png' },
